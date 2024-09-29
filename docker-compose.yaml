@@ -1,3 +1,4 @@
+version: "3"
 services:
   mysql:
     image: mysql:latest
@@ -15,6 +16,20 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: id_db
+    volumes:
+      - .:/usr/src/app
 
 volumes:
   mysql-data:

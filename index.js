@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 const db = mysql.createPool({
-  host: "localhost",
+  host: "mysql",
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
